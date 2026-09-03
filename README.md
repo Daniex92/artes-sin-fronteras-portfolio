@@ -1,182 +1,81 @@
-# Golden Canvas Showcase
+# Artes sin Fronteras
 
-Crea una página web moderna para "Artes sin Fronteras" - 
-
-Un portafolio de artista especializado en pintura estilo Ráquira 
-
-(coloridas, detalladas y vibrantes)
-
-
-
-⚠️ IMPORTANTE: 
-
-- NO generes imágenes, solo usa placeholders (unsplash o imagen placeholder simple)
-
-- Prioriza código HTML/CSS limpio y componentes reutilizables
-
-- La estructura debe estar lista para recibir logo SVG externo
-
-
-
-═══════════════════════════════════════════════════════════
-
-
-
-DISEÑO VISUAL GENERAL:
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-• Paleta: Fondo oscuro (#0a0a0a a #1a1a1a), acentos dorados (#d4af37, #c9a961)
-
-• Efecto: Glass-morphism (bordes semi-transparentes, backdrop-blur)
-
-• Decoración: Partículas/puntos sutiles flotantes en background
-
-• Tipografía: Moderna y elegante (Poppins, Montserrat o similar)
-
-• Animaciones: Transiciones suaves, hover effects elegantes
-
-
-
-═══════════════════════════════════════════════════════════
-
-
-
-SECCIONES REQUERIDAS:
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-
-
-1️⃣ HERO SECTION
-
-   Layout: Dos columnas (izquierda texto, derecha imagen)
-
-   
-
-   COLUMNA IZQUIERDA:
-
-   • Espacio para logo SVG (placeholder vacío, será cargado externamente)
-
-   • Título principal: "Artes sin Fronteras"
-
-   • Tagline pequeño (máx 2 líneas, descriptivo)
-
-   • Párrafo breve (2-3 líneas) describiendo la visión del artista
-
-   • Botón CTA: "Explorar Obras" (dorado, efecto hover glass)
-
-   
-
-   COLUMNA DERECHA:
-
-   • Imagen grande placeholder (relación 4:5 o 1:1, responsive)
-
-   • Borde sutil dorado alrededor
-
-   • Efecto sombra/glow sutil
-
-
-
-2️⃣ NAVEGACIÓN (sticky/fixed):
-
-   • Logo space (para SVG externo)
-
-   • Links: Home | About | Catálogo | Contacto
-
-   • Diseño minimalista, consistente con la paleta
-
-
-
-3️⃣ FOOTER BÁSICO:
-
-   • Redes sociales (placeholders)
-
-   • Copyright
-
-   • Consistente con diseño
-
-
-
-═══════════════════════════════════════════════════════════
-
-
-
-ESPECIFICACIONES TÉCNICAS:
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-• Responsive: Mobile-first, breakpoints en tablet y desktop
-
-• Rendimiento: CSS optimizado, sin librerías innecesarias
-
-• Modularidad: Componentes reutilizables para secciones
-
-• Animaciones: Usar CSS puro (no librerías pesadas como AOS)
-
-• Background: Patrón sutil o gradiente degradado con partículas CSS
-
-
-
-═══════════════════════════════════════════════════════════
-
-
-
-PALETA DE COLORES ESPECÍFICA:
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-Primario oscuro: #0a0a0a
-
-Secundario oscuro: #1a1a1a
-
-Dorado principal: #d4af37
-
-Dorado suave: #c9a961
-
-Texto claro: #f5f5f5
-
-Acentos: #e8d5b7 (beige suave)
-
-
-
-═══════════════════════════════════════════════════════════
-
-
-
-ENTREGABLES:
-
-✅ HTML limpio y semántico
-
-✅ CSS modular (variables CSS para colores)
-
-✅ Responsive en todos los dispositivos
-
-✅ Hero section fully funcional
-
-✅ Estructura lista para Pannellum (sin implementar aún)
-
-✅ Placeholders claros para imágenes y contenido dinámico
-
-This project was built with [Lovable](https://lovable.dev).
-
-**Live app**: https://artes-sin-fronteras-portfolio.lovable.app
-
-## Build with Lovable
-
-Continue developing this project in the [Lovable editor](https://lovable.dev/projects/220f75f9-42c0-41ae-a0e0-c0bdb7b4d03d).
-
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: every change made in Lovable is committed straight to this repository.
-- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
+Portafolio de arte con pintura estilo Ráquira. Construido con TanStack Start, React,
+TypeScript y Tailwind CSS.
 
 ## Development
 
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
-
 ```sh
-git clone <this-repository-url>
-cd <repository-name>
 npm i
 npm run dev
 ```
+
+---
+
+## Logo
+
+Coloca tu logo SVG en `public/logo.svg`. El componente `LogoSlot` lo usa
+automáticamente y muestra un marcador dorado si el archivo no existe.
+
+---
+
+## Visor 360° (Pannellum)
+
+El visor vive en `src/components/PanoramaViewer.tsx` y carga Pannellum desde CDN
+(`https://pannellum.org/js/pannellum.js` + su CSS), sin dependencias npm.
+Se renderiza en el contenedor `<div id="pannellum-viewer">` dentro de la sección
+**Catálogo** con altura responsiva de 400–500 px y controles de zoom, arrastre y
+pantalla completa habilitados.
+
+### Cómo reemplazar la imagen
+
+1. Sube tu panorámica a `public/` (por ejemplo `public/panoramas/obra-01.jpg`)
+   o a un hosting/CDN propio.
+2. Abre `src/components/PanoramaViewer.tsx` y cambia la constante:
+
+   ```ts
+   export const PANORAMA_URL = "/panoramas/obra-01.jpg";
+   ```
+
+3. Guarda: el visor se recarga con la nueva obra.
+
+También puedes pasar la imagen por prop, sin tocar la constante:
+
+```tsx
+<PanoramaViewer src="/panoramas/obra-02.jpg" title="Feria de Colores 360°" />
+```
+
+### Formato recomendado
+
+| Requisito   | Valor                                              |
+| ----------- | -------------------------------------------------- |
+| Proyección  | Equirectangular (esférica, 360° × 180°)            |
+| Relación    | Exactamente 2:1                                    |
+| Resolución  | Mínimo 2048 × 1024 px; ideal 4096 × 2048 px        |
+| Formato     | JPG (calidad 80–85) para el mejor peso/definición   |
+| Peso        | Idealmente < 3 MB para una carga rápida en móvil    |
+
+Si la relación no es 2:1, la escena aparecerá estirada o con costuras visibles.
+
+### 360° equirectangular vs. imagen 2D plana
+
+- **360° equirectangular**: una sola imagen que envuelve toda la esfera alrededor
+  del espectador. Los bordes izquierdo y derecho se unen y el usuario puede girar,
+  mirar arriba/abajo y acercarse. Se genera con cámara 360 (Insta360, Ricoh Theta),
+  con un panorama cosido en Lightroom/PTGui, o con un render 3D exportado en modo
+  panorámico. Es el único formato válido para el visor de esta página.
+- **Imagen 2D plana**: una foto normal (por ejemplo 4:3 o 1:1), como las del
+  catálogo. No tiene información de esfera: si la cargas en Pannellum se verá
+  deformada y con un hueco negro al girar. Estas imágenes van en las tarjetas de
+  obra (`ArtworkCard`), no en el visor.
+
+Regla práctica: si la imagen se puede "recorrer girando en todas direcciones", es
+360°; si es un cuadro que se mira de frente, es 2D y va en el catálogo.
+
+---
+
+## Placeholders actuales
+
+- Obras del catálogo: imágenes temporales de Unsplash en `src/routes/index.tsx`
+  (array `ARTWORKS`).
+- Panorámica 360°: placeholder equirectangular en `PANORAMA_URL`.
