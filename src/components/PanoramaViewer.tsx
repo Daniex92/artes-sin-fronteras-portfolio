@@ -10,8 +10,15 @@ import { useEffect, useRef, useState } from "react";
 export const PANORAMA_URL =
   "https://pannellum.org/images/alma.jpg"; // ← PLACEHOLDER equirectangular 2:1
 
-const PANNELLUM_JS = "https://pannellum.org/js/pannellum.js";
-const PANNELLUM_CSS = "https://pannellum.org/css/pannellum.css";
+// CDN oficial primero; si la red lo bloquea, se intenta un espejo.
+const JS_SOURCES = [
+  "https://pannellum.org/js/pannellum.js",
+  "https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.js",
+];
+const CSS_SOURCES = [
+  "https://pannellum.org/css/pannellum.css",
+  "https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css",
+];
 
 declare global {
   interface Window {
@@ -21,28 +28,45 @@ declare global {
   }
 }
 
-function loadOnce(): Promise<void> {
-  if (window.pannellum) return Promise.resolve();
-
-  if (!document.querySelector(`link[href="${PANNELLUM_CSS}"]`)) {
-    const link = document.createElement("link");
-    link.rel = "stylesheet";
-    link.href = PANNELLUM_CSS;
-    document.head.appendChild(link);
-  }
-
-  const existing = document.querySelector<HTMLScriptElement>(`script[src="${PANNELLUM_JS}"]`);
-  const script = existing ?? document.createElement("script");
-  const promise = new Promise<void>((resolve, reject) => {
-    script.addEventListener("load", () => resolve());
-    script.addEventListener("error", () => reject(new Error("No se pudo cargar Pannellum")));
+function injectCss(href: string) {
+  if (document.querySelector(`link[href="${href}"]`)) return;
+  const link = document.createElement("link");
+  link.rel = "stylesheet";
+  link.href = href;
+  link.addEventListener("error", () => {
+    const next = CSS_SOURCES[CSS_SOURCES.indexOf(href) + 1];
+    if (next) injectCss(next);
   });
-  if (!existing) {
-    script.src = PANNELLUM_JS;
-    script.async = true;
-    document.head.appendChild(script);
+  document.head.appendChild(link);
+}
+
+function injectJs(src: string): Promise<void> {
+  return new Promise((resolve, reject) => {
+    const existing = document.querySelector<HTMLScriptElement>(`script[src="${src}"]`);
+    const script = existing ?? document.createElement("script");
+    script.addEventListener("load", () => resolve());
+    script.addEventListener("error", () => reject(new Error(`No se pudo cargar ${src}`)));
+    if (!existing) {
+      script.src = src;
+      script.async = true;
+      document.head.appendChild(script);
+    }
+  });
+}
+
+async function loadOnce(): Promise<void> {
+  if (window.pannellum) return;
+  injectCss(CSS_SOURCES[0]);
+  let lastError: unknown;
+  for (const src of JS_SOURCES) {
+    try {
+      await injectJs(src);
+      if (window.pannellum) return;
+    } catch (e) {
+      lastError = e;
+    }
   }
-  return promise;
+  throw lastError ?? new Error("Pannellum no disponible");
 }
 
 export function PanoramaViewer({ src = PANORAMA_URL, title }: { src?: string; title?: string }) {
