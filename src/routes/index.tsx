@@ -5,6 +5,7 @@ import { SiteNav } from "@/components/SiteNav";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SectionHeading } from "@/components/SectionHeading";
 import { ArtworkCard, type Artwork } from "@/components/ArtworkCard";
+import { PanoramaViewer } from "@/components/PanoramaViewer";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -126,17 +127,8 @@ function Index() {
               ))}
             </div>
 
-            {/* Espacio reservado para el visor panorámico (Pannellum) */}
-            <div
-              id="pannellum-viewer"
-              data-viewer="pannellum"
-              aria-label="Espacio reservado para el visor panorámico 360°"
-              className="glass mt-12 flex aspect-video w-full items-center justify-center rounded-2xl border-dashed"
-            >
-              <p className="px-6 text-center text-xs tracking-[0.24em] text-gold-soft uppercase">
-                Galería inmersiva 360° · próximamente
-              </p>
-            </div>
+            {/* Visor panorámico 360° (Pannellum vía CDN) */}
+            <PanoramaViewer title="Galería inmersiva · Artes sin Fronteras" />
           </div>
         </section>
       </main>
