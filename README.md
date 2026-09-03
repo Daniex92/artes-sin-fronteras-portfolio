@@ -32,7 +32,7 @@ suave (se pausa al interactuar; desactívala con `autorotate={false}`).
 
 1. Sube tu panorámica a `public/` (por ejemplo `public/panoramas/obra-01.jpg`)
    o a un hosting/CDN propio.
-2. Abre `src/components/PanoramaViewer.tsx` y cambia la constante:
+2. Abre `src/components/SphericalViewer.tsx` y cambia la constante:
 
    ```ts
    export const PANORAMA_URL = "/panoramas/obra-01.jpg";
@@ -43,7 +43,7 @@ suave (se pausa al interactuar; desactívala con `autorotate={false}`).
 También puedes pasar la imagen por prop, sin tocar la constante:
 
 ```tsx
-<PanoramaViewer src="/panoramas/obra-02.jpg" title="Feria de Colores 360°" />
+<SphericalViewer src="/panoramas/obra-02.jpg" title="Feria de Colores 360°" />
 ```
 
 ### Formato recomendado
