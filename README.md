@@ -66,7 +66,7 @@ Si la relación no es 2:1, la escena aparecerá estirada o con costuras visibles
   con un panorama cosido en Lightroom/PTGui, o con un render 3D exportado en modo
   panorámico. Es el único formato válido para el visor de esta página.
 - **Imagen 2D plana**: una foto normal (por ejemplo 4:3 o 1:1), como las del
-  catálogo. No tiene información de esfera: si la cargas en Pannellum se verá
+  catálogo. No tiene información de esfera: si la cargas en el visor se verá
   deformada y con un hueco negro al girar. Estas imágenes van en las tarjetas de
   obra (`ArtworkCard`), no en el visor.
 
