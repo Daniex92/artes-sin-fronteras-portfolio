@@ -55,7 +55,7 @@ export function SphericalViewer({
       });
       setStatus("ready");
     })().catch((e) => {
-      console.error("[SphericalViewer]", e);
+      console.error("[SphericalViewer]", e?.message ?? e, e?.stack ?? "");
       if (!cancelled) setStatus("error");
     });
 
