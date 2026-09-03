@@ -19,13 +19,14 @@ automáticamente y muestra un marcador dorado si el archivo no existe.
 
 ---
 
-## Visor 360° (Pannellum)
+## Visor 360° (Photo Sphere Viewer)
 
-El visor vive en `src/components/PanoramaViewer.tsx` y carga Pannellum desde CDN
-(`https://pannellum.org/js/pannellum.js` + su CSS), sin dependencias npm.
-Se renderiza en el contenedor `<div id="pannellum-viewer">` dentro de la sección
-**Catálogo** con altura responsiva de 400–500 px y controles de zoom, arrastre y
-pantalla completa habilitados.
+El visor vive en `src/components/SphericalViewer.tsx` y usa Photo Sphere Viewer
+instalado como dependencia npm (`photo-sphere-viewer`), sin CDN.
+Se renderiza en el contenedor `<div id="spherical-viewer">` dentro de la sección
+**Catálogo** con altura responsiva de 400–500 px y controles de zoom (rueda +
+botones), arrastre con mouse/touch, pantalla completa y rotación automática
+suave (se pausa al interactuar; desactívala con `autorotate={false}`).
 
 ### Cómo reemplazar la imagen
 
