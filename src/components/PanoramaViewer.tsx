@@ -56,7 +56,7 @@ function injectJs(src: string): Promise<void> {
 
 async function loadOnce(): Promise<void> {
   if (window.pannellum) return;
-  injectCss(CSS_SOURCES[0]);
+  injectCss(CSS_SOURCES[0]!);
   let lastError: unknown;
   for (const src of JS_SOURCES) {
     try {
