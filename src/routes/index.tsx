@@ -5,7 +5,7 @@ import { SiteNav } from "@/components/SiteNav";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SectionHeading } from "@/components/SectionHeading";
 import { ArtworkCard, type Artwork } from "@/components/ArtworkCard";
-import { PanoramaViewer } from "@/components/PanoramaViewer";
+import { SphericalViewer } from "@/components/SphericalViewer";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -127,8 +127,8 @@ function Index() {
               ))}
             </div>
 
-            {/* Visor panorámico 360° (Pannellum vía CDN) */}
-            <PanoramaViewer title="Galería inmersiva · Artes sin Fronteras" />
+            {/* Visor panorámico 360° (Photo Sphere Viewer, npm) */}
+            <SphericalViewer title="Galería inmersiva · Artes sin Fronteras" />
           </div>
         </section>
       </main>

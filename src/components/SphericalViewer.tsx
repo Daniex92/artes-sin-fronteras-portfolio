@@ -9,7 +9,7 @@ import "photo-sphere-viewer/dist/photo-sphere-viewer.css";
  * de tu propia imagen equirectangular (relación 2:1, mínimo 2048x1024).
  * Ver README.md → "Visor 360° (Photo Sphere Viewer)".
  */
-export const PANORAMA_URL = "https://pannellum.org/images/alma.jpg"; // ← PLACEHOLDER equirectangular 2:1
+export const PANORAMA_URL = "https://photo-sphere-viewer-data.netlify.app/assets/sphere.jpg"; // ← PLACEHOLDER equirectangular 2:1
 
 type PSVViewer = { destroy: () => void };
 

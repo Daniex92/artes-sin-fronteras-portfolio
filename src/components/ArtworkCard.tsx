@@ -2,7 +2,7 @@ export type Artwork = {
   title: string;
   technique: string;
   image: string;
-  /** Reservado para el visor 360° (Pannellum). Placeholder por ahora. */
+  /** Reservado para el visor 360° (Photo Sphere Viewer). Placeholder por ahora. */
   panorama?: string;
 };
 
