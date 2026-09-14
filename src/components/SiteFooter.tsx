@@ -1,10 +1,11 @@
+import { Link } from "@tanstack/react-router";
 import { LogoSlot } from "./LogoSlot";
 
 const SOCIALS = [
-  { label: "Instagram", href: "#" },
-  { label: "Facebook", href: "#" },
   { label: "WhatsApp", href: "#" },
-  { label: "Email", href: "#" },
+  { label: "Instagram", href: "#" },
+  { label: "Twitter", href: "#" },
+  { label: "Facebook", href: "#" },
 ];
 
 export function SiteFooter() {
@@ -14,12 +15,14 @@ export function SiteFooter() {
         <div className="flex flex-col items-center gap-8 text-center md:flex-row md:justify-between md:text-left">
           <div className="flex items-center gap-4">
             <LogoSlot className="h-12 w-12" />
-            <div>
-              <p className="font-display text-sm font-semibold tracking-[0.18em] uppercase">
-                Artes sin Fronteras
-              </p>
-              <p className="mt-1 text-xs text-muted-foreground">Pintura estilo Ráquira · Colombia</p>
-            </div>
+            <Link to="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
+              <div>
+                <p className="font-display text-sm font-semibold tracking-[0.18em] uppercase">
+                  Sergio Guzmán
+                </p>
+                <p className="mt-1 text-xs text-muted-foreground">Pintor y escultor</p>
+              </div>
+            </Link>
           </div>
 
           <ul className="flex flex-wrap items-center justify-center gap-5 text-xs tracking-[0.14em] uppercase">
@@ -37,7 +40,7 @@ export function SiteFooter() {
         </div>
 
         <div className="mt-8 border-t border-border pt-6 text-center text-xs text-muted-foreground">
-          © {new Date().getFullYear()} Artes sin Fronteras. Todos los derechos reservados.
+          © {new Date().getFullYear()} Sergio Guzmán | Sitio web diseñado y desarrollado por <a href="https://danielsierra.online" target="_blank" rel="noopener noreferrer" className="link-underline text-muted-foreground transition-colors hover:text-gold">Daniel Sierra</a>.
         </div>
       </div>
     </footer>

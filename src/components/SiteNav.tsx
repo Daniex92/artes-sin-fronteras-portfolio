@@ -1,12 +1,13 @@
 import { useEffect, useRef, useState } from "react";
+import { Link } from "@tanstack/react-router";
 
 import { LogoSlot } from "./LogoSlot";
 
 const LINKS = [
-  { label: "Home", href: "#inicio" },
-  { label: "About", href: "#sobre" },
-  { label: "Catálogo", href: "#catalogo" },
-  { label: "Contacto", href: "#contacto" },
+  { label: "Inicio", href: "/", hash: undefined },
+  { label: "Sobre", href: "/", hash: "sobre" },
+  { label: "Catalogo", href: "/", hash: "catalogo" },
+  { label: "Panoramas", href: "/", hash: "panoramas" },
 ];
 
 export function SiteNav() {
@@ -34,23 +35,24 @@ export function SiteNav() {
         aria-label="Navegación principal"
         className="glass-strong mx-auto mt-3 flex w-[min(1200px,94%)] items-center justify-between rounded-full px-4 py-2.5 sm:px-6"
       >
-        <a href="#inicio" className="flex items-center gap-3">
+        <Link to="/" className="flex items-center gap-3">
           <LogoSlot className="h-9 w-9 shrink-0" />
           <span className="font-display text-sm font-semibold tracking-[0.18em] text-foreground uppercase">
-            Artes sin Fronteras
+            Arte Sin Fronteras
           </span>
-        </a>
+        </Link>
 
         {/* Desktop */}
         <ul className="hidden items-center gap-7 text-[0.7rem] tracking-[0.14em] uppercase md:flex">
           {LINKS.map((l) => (
-            <li key={l.href}>
-              <a
-                href={l.href}
+            <li key={l.label}>
+              <Link
+                to={l.href}
+                hash={l.hash}
                 className="link-underline text-muted-foreground transition-colors hover:text-gold"
               >
                 {l.label}
-              </a>
+              </Link>
             </li>
           ))}
         </ul>
@@ -97,7 +99,7 @@ export function SiteNav() {
           <div className="flex items-center gap-3">
             <LogoSlot className="h-9 w-9 shrink-0" />
             <span className="font-display text-xs font-semibold tracking-[0.18em] uppercase">
-              Artes sin Fronteras
+              Sergio Guzmán
             </span>
           </div>
           <button
@@ -112,19 +114,20 @@ export function SiteNav() {
 
         <ul className="flex flex-col gap-1 text-sm tracking-[0.14em] uppercase">
           {LINKS.map((l) => (
-            <li key={l.href}>
-              <a
-                href={l.href}
+            <li key={l.label}>
+              <Link
+                to={l.href}
+                hash={l.hash}
                 onClick={() => setOpen(false)}
                 className="block rounded-xl px-3 py-3 text-muted-foreground transition-colors hover:bg-gold/10 hover:text-gold"
               >
                 {l.label}
-              </a>
+              </Link>
             </li>
           ))}
         </ul>
 
-        <p className="mt-auto text-xs text-muted-foreground">Pintura estilo Ráquira · Colombia</p>
+        <p className="mt-auto text-xs text-muted-foreground">Lorem ipsum dolor sit amet</p>
       </div>
     </header>
   );

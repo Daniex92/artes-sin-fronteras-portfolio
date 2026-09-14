@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils";
-
+import Logo from "@/assets/Logo.png";
 type LogoSlotProps = {
   /** Ruta al SVG externo, ej: "/logo.svg". Si no existe, se muestra el placeholder. */
   src?: string;
@@ -24,9 +24,7 @@ export function LogoSlot({ src, className, label = "Artes sin Fronteras" }: Logo
       {src ? (
         <img src={src} alt={label} className="h-full w-full object-contain" />
       ) : (
-        <span className="px-2 text-[10px] font-medium tracking-[0.22em] text-gold-soft uppercase">
-          Logo
-        </span>
+        <img src={Logo} alt={label} className="h-full w-full object-contain" />
       )}
     </div>
   );

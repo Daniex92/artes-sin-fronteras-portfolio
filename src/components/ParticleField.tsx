@@ -1,9 +1,9 @@
 import { cn } from "@/lib/utils";
 
 const PARTICLES = Array.from({ length: 28 }, (_, i) => {
-  const seed = (i * 37) % 100;
+  const seed = (i * 67) % 100;
   return {
-    left: `${(seed * 1.7) % 100}%`,
+    left: `${(seed * 2.7) % 100}%`,
     top: `${(seed * 3.1) % 100}%`,
     size: 2 + (i % 4),
     duration: `${10 + (i % 7) * 1.8}s`,

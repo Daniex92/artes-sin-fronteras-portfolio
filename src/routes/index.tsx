@@ -4,23 +4,29 @@ import { Hero } from "@/components/Hero";
 import { SiteNav } from "@/components/SiteNav";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SectionHeading } from "@/components/SectionHeading";
+<<<<<<< Updated upstream
 import { ArtworkCard, type Artwork } from "@/components/ArtworkCard";
 import { SphericalViewer } from "@/components/SphericalViewer";
+=======
+import { ArtworkCard } from "@/components/ArtworkCard";
+import { PanoramaViewer } from "@/components/PanoramaViewer";
+import { ARTWORKS } from "@/data/artworks";
+import { CUADROS } from "@/data/cuadros";
+>>>>>>> Stashed changes
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Artes sin Fronteras | Pintura estilo Ráquira" },
+      { title: "Sergio Guzmán | Lorem ipsum" },
       {
         name: "description",
         content:
-          "Portafolio de arte contemporáneo con pintura estilo Ráquira: obras coloridas, detalladas y vibrantes inspiradas en la tradición boyacense.",
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
       },
-      { property: "og:title", content: "Artes sin Fronteras | Pintura estilo Ráquira" },
+      { property: "og:title", content: "Sergio Guzmán | Lorem ipsum" },
       {
         property: "og:description",
-        content:
-          "Obras coloridas, detalladas y vibrantes que unen la tradición artesanal de Ráquira con el arte contemporáneo.",
+        content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -28,45 +34,6 @@ export const Route = createFileRoute("/")({
   }),
   component: Index,
 });
-
-const ARTWORKS: Artwork[] = [
-  {
-    title: "Barro Vivo",
-    technique: "Acrílico sobre lienzo",
-    image:
-      "https://images.unsplash.com/photo-1578321272176-b7bbc0679853?auto=format&fit=crop&w=800&q=70",
-  },
-  {
-    title: "Feria de Colores",
-    technique: "Mixta sobre madera",
-    image:
-      "https://images.unsplash.com/photo-1552083375-1447ce886485?auto=format&fit=crop&w=800&q=70",
-  },
-  {
-    title: "Alfarera",
-    technique: "Óleo sobre lienzo",
-    image:
-      "https://images.unsplash.com/photo-1513364776144-60967b0f800f?auto=format&fit=crop&w=800&q=70",
-  },
-  {
-    title: "Rutas del Altiplano",
-    technique: "Acrílico y pan de oro",
-    image:
-      "https://images.unsplash.com/photo-1531913764164-f85c52e6e654?auto=format&fit=crop&w=800&q=70",
-  },
-  {
-    title: "Fiesta de Ráquira",
-    technique: "Acrílico sobre lienzo",
-    image:
-      "https://images.unsplash.com/photo-1499781350541-7783f6c6a0c8?auto=format&fit=crop&w=800&q=70",
-  },
-  {
-    title: "Memoria de Arcilla",
-    technique: "Mixta sobre papel",
-    image:
-      "https://images.unsplash.com/photo-1487147264018-f937fba0c817?auto=format&fit=crop&w=800&q=70",
-  },
-];
 
 function Index() {
   return (
@@ -80,24 +47,24 @@ function Index() {
         <section id="sobre" className="px-5 py-20 sm:px-8 lg:py-24">
           <div className="mx-auto w-[min(1200px,100%)]">
             <SectionHeading
-              eyebrow="Sobre el artista"
-              title="Tradición que se pinta a sí misma"
-              description="El estilo Ráquira nace de la alfarería boyacense: figuras cálidas, patrones repetidos y una paleta que celebra la vida. Cada pieza traduce ese lenguaje al lienzo con capas de detalle y color."
+              eyebrow="Mejores obras de arte"
+              title="Obras Importantes"
+              description="Aquí se presentan algunas de mis obras más destacadas, que reflejan mi estilo único y mi pasión por el arte."
             />
 
             <div className="mt-12 grid gap-5 sm:grid-cols-3">
               {[
                 {
-                  k: "Color",
-                  v: "Paletas vibrantes construidas por capas para lograr profundidad y luz.",
+                  k: "Lorem",
+                  v: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
                 },
                 {
-                  k: "Detalle",
-                  v: "Trazo minucioso inspirado en los grabados de la cerámica tradicional.",
+                  k: "Ipsum",
+                  v: "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
                 },
                 {
-                  k: "Raíz",
-                  v: "Cada obra parte de una historia local y termina en un lenguaje universal.",
+                  k: "Dolor",
+                  v: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.",
                 },
               ].map((item) => (
                 <div
@@ -112,23 +79,45 @@ function Index() {
           </div>
         </section>
 
-        {/* CATÁLOGO */}
+        {/* CATÁLOGO CUADROS */}
         <section id="catalogo" className="px-5 py-16 sm:px-8 lg:py-24">
           <div className="mx-auto w-[min(1200px,100%)]">
             <SectionHeading
-              eyebrow="Catálogo"
-              title="Obras seleccionadas"
-              description="Imágenes de referencia temporales. Cada obra podrá abrirse en un recorrido inmersivo 360°."
+              eyebrow="Catalogo de Cuadros"
+              title="Cuadros de barro vivo y otros"
+              description="Colección de cuadros de barro vivo y otras obras de arte."
+            />
+
+            <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {CUADROS.map((a) => (
+                <ArtworkCard key={a.title} cuadros={a} type="cuadro" />
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* CATÁLOGO MURALES*/}
+        <section id="panoramas" className="px-5 py-16 sm:px-8 lg:py-24">
+          <div className="mx-auto w-[min(1200px,100%)]">
+            <SectionHeading
+              eyebrow="Catalogo de Murales"
+              title="Murales de barro vivo y otros"
+              description="Colección de murales de barro vivo y otras obras de arte."
             />
 
             <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {ARTWORKS.map((a) => (
-                <ArtworkCard key={a.title} artwork={a} />
+                <ArtworkCard key={a.title} cuadros={a} type="artwork" />
               ))}
             </div>
 
+<<<<<<< Updated upstream
             {/* Visor panorámico 360° (Photo Sphere Viewer, npm) */}
             <SphericalViewer title="Galería inmersiva · Artes sin Fronteras" />
+=======
+            {/* Visor panorámico 360° (Pannellum vía CDN) */}
+            <PanoramaViewer title="Lorem ipsum · Sergio Guzmán" />
+>>>>>>> Stashed changes
           </div>
         </section>
       </main>
