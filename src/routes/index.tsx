@@ -4,15 +4,10 @@ import { Hero } from "@/components/Hero";
 import { SiteNav } from "@/components/SiteNav";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SectionHeading } from "@/components/SectionHeading";
-<<<<<<< Updated upstream
-import { ArtworkCard, type Artwork } from "@/components/ArtworkCard";
-import { SphericalViewer } from "@/components/SphericalViewer";
-=======
 import { ArtworkCard } from "@/components/ArtworkCard";
 import { PanoramaViewer } from "@/components/PanoramaViewer";
 import { ARTWORKS } from "@/data/artworks";
 import { CUADROS } from "@/data/cuadros";
->>>>>>> Stashed changes
 
 export const Route = createFileRoute("/")({
   head: () => ({
